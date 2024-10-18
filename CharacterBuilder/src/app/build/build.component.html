@@ -1,0 +1,55 @@
+<h1>Character Builder</h1>
+
+<form (ngSubmit)="buildCharacter()">
+  <label for="eye">Eye:</label>
+  <select id="eye" [(ngModel)]="eye" name="eye" required>
+    <option value="" disabled selected>Select an Eye Type</option>
+    <option value="NoEye">NoEye</option>
+    <option value="HalfOpen">HalfOpen</option>
+    <option value="Closed">Closed</option>
+    <option value="Open">Open</option>
+  </select>
+  <br><br>
+
+  <label for="hasHammer">Has Hammer:</label>
+  <input type="checkbox" id="hasHammer" [(ngModel)]="hasHammer" name="hasHammer">
+  <br><br>
+
+  <label for="mouth">Mouth:</label>
+  <select id="mouth" [(ngModel)]="mouth" name="mouth" required>
+    <option value="" disabled selected>Select a Mouth Type</option>
+    <option value="NoMouth">NoMouth</option>
+    <option value="Happy">Happy</option>
+    <option value="Normal">Normal</option>
+    <option value="Unhappy">Unhappy</option>
+  </select>
+  <br><br>
+
+  <label for="rightHand">Right Hand:</label>
+  <select id="rightHand" [(ngModel)]="rightHand" name="rightHand" required>
+    <option value="" disabled selected>Select a Hand Type</option>
+    <option value="NoHand">NoHand</option>
+    <option value="Normal">Normal</option>
+    <option value="Victory">Victory</option>
+  </select>
+  <br><br>
+
+  <label for="hasTail">Has Tail:</label>
+  <input type="checkbox" id="hasTail" [(ngModel)]="hasTail" name="hasTail">
+  <br><br>
+
+  <button type="submit">Build Image</button>
+</form>
+
+<div *ngIf="imageUrl">
+  <h3>Generated Character:</h3>
+  <img [src]="imageUrl()" alt="Generated Character" />
+</div>
+<div *ngIf="!imageUrl && character">
+  <h3>Character Details:</h3>
+  <p>Eye: {{ character.eye }}</p>
+  <p>Has Hammer: {{ character.hasHammer }}</p>
+  <p>Mouth: {{ character.mouth }}</p>
+  <p>Right Hand: {{ character.rightHand }}</p>
+  <p>Has Tail: {{ character.hasTail }}</p>
+</div>
