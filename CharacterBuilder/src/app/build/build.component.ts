@@ -2,6 +2,8 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { ApiService, Character, CharacterResponse, Eye, Mouth, RightHand } from '../api.service';
 import { FormsModule } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-build',
@@ -46,4 +48,23 @@ export class BuildComponent {
       this.imageUrl.set(null);
     }
   }
+
+  private readonly httpClient = inject(HttpClient);
+
+  getCharactersRandomImage(): Promise<CharacterResponse> {
+    return firstValueFrom(
+      this.httpClient.get<CharacterResponse>(
+        'http://localhost:5110/build-image-url'
+      )
+    )
+  }
+
+  /*getCaharctersImage() : Promise<CharacterResponse> {
+    return firstValueFrom(
+      this.httpClient.get<CharacterResponse>(
+        `http://localhost:5110/img/${imageId}`
+      )
+    )
+  }*/
+
 }

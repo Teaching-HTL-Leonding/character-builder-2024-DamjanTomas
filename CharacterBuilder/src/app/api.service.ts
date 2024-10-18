@@ -15,7 +15,7 @@ export type Mouth = "NoMouth" | "Happy" | "Normal" | "Unhappy";
 export type RightHand = "NoHand" | "Normal" | "Victory";
 export type CharacterResponse = {
   url: string;
-  data: { url: Character }[];
+  data: { }[];
 }
 
 @Injectable({
